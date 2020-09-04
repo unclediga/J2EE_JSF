@@ -11,5 +11,12 @@
 
     <artifactId>JSFfB</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.glassfish</groupId>
+            <artifactId>javax.faces</artifactId>
+            <version>2.2.20</version>
+        </dependency>
+    </dependencies>
 
 </project>
