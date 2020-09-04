@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+<h:head>
+    <title>Student Registration Form</title>
+</h:head>
+
+<h:body>
+    <h:form>
+        First name: <h:inputText value="#{student.firstName}" />
+        <br/><br/>
+        Last name: <h:inputText value="#{student.lastName}" />
+        <br/><br/>
+        <h:commandButton value="Submit" action="student_response"/>
+    </h:form>
+</h:body>
+
+</html>
