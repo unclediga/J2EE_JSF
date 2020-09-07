@@ -7,6 +7,7 @@
       xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
     <title>Student Table</title>
+    <h:outputStylesheet library="css" name="student_table.css"/>
 </h:head>
 
 <h:body>
@@ -19,7 +20,10 @@
     </ul>
     <h3>Student Table</h3>
     <hr/>
-    <h:dataTable value="#{dataUtil.students}" var="student" border="1">
+    <h:dataTable value="#{dataUtil.students}" var="student"
+                 styleClass="studentTable"
+                 headerClass="studentTableHeader"
+                 rowClasses="studentTableOddRow,studentTableEvenRow">
         <h:column>
             <f:facet name="header">First Name</f:facet>
             <h:outputText value="#{student.firstName}"/>
