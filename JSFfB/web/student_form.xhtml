@@ -49,6 +49,12 @@
         <h:message for="postalCode" styleClass="error"/>
         <br/><br/>
 
+        Course Code:
+        <h:inputText value="#{student.courseCode}" id="courseCode" label="Course Code"
+            validator="#{student.validateCourseCode}"/>
+        <h:message for="courseCode" styleClass="error"/>
+        <br/><br/>
+
         Country:
         <h:selectOneMenu value="#{student.country}">
             <f:selectItems value="#{student.countryOptions}"/>
