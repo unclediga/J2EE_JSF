@@ -1,10 +1,34 @@
 import javax.faces.bean.ManagedBean;
+import java.util.ArrayList;
+import java.util.List;
 
 @ManagedBean
 public class Student {
     private String firstName;
     private String lastName;
     private String country;
+    private final List<String> countryOptions;
+
+    public Student() {
+        countryOptions = new ArrayList<String>();
+        countryOptions.add("BR");
+        countryOptions.add("FR");
+        countryOptions.add("GR");
+        countryOptions.add("IN");
+        countryOptions.add("GB");
+        countryOptions.add("US");
+
+//        itemLabel="Brazil"/>
+//                itemLabel="France"/>
+//                itemLabel="Germany"/>
+//                itemLabel="India"/>
+//                itemLabel="United Kingdom"/>
+//                itemLabel="United States"/>
+    }
+
+    public List<String> getCountryOptions() {
+        return countryOptions;
+    }
 
     public String getFirstName() {
         return firstName;
