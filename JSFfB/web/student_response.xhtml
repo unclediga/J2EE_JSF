@@ -2,21 +2,29 @@
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 <h:head>
     <title>Student Confirmation</title>
 </h:head>
 
 <h:body>
-    The student is confirmed ::
-    <!--@elvariable id="student" type="Student"-->
-    ${student.firstName}
-    #{student.lastName}
-    <p/>
-    Country: #{student.country}
-    <p/>
-    Language: #{student.language}
+    The student is confirmed :
 
+    ${student.firstName}
+
+    <h:outputText value="#{student.lastName}"/>
+    <p/>
+
+    Country: <h:outputText value="#{student.country}"/>
+    <p/>
+
+    Favorite Languages:
+    <ul>
+        <ui:repeat value="#{student.favLangs}" var="lang">
+            <li><h:outputText value="#{lang}"/></li>
+        </ui:repeat>
+    </ul>
 </h:body>
 
 </html>

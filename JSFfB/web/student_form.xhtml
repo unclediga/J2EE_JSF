@@ -3,7 +3,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:a="http://xmlns.jcp.org/jsf/passthrough" xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
     <title>Student Registration Form</title>
 </h:head>
@@ -12,17 +12,21 @@
     <h:form>
         First name: <h:inputText value="#{student.firstName}"/>
         <br/><br/>
+
         Last name: <h:inputText value="#{student.lastName}"/>
         <br/><br/>
+
         Country:
         <h:selectOneMenu value="#{student.country}">
             <f:selectItems value="#{student.countryOptions}" />
         </h:selectOneMenu>
         <br/><br/>
-        Languages:
-        <h:selectOneRadio value="#{student.language}">
+
+        Favorite Languages:
+        <h:selectManyCheckbox value="#{student.favLangs}">
             <f:selectItems value="#{student.languageOptions}" />
-        </h:selectOneRadio>
+        </h:selectManyCheckbox>
+
         <h:commandButton value="Submit" action="student_response"/>
     </h:form>
 </h:body>
