@@ -28,6 +28,27 @@
         <h:message for="email" styleClass="error"/>
         <br/><br/>
 
+        Phone number:
+        <h:inputText value="#{student.phoneNumber}" id="phoneNumber" label="Phone number"
+                     validatorMessage="Phone num must be (xxx)xxx-xx-xx">
+            <f:validateRegex pattern="\(\d{3}\)\d{3}-\d{2}-\d{2}"/>
+        </h:inputText>
+        <br/><br/>
+
+        Free Passes:
+        <h:inputText value="#{student.freePasses}" id="freePasses" label="Free passes">
+            <f:validateLongRange minimum="0" maximum="10"/>
+        </h:inputText>
+        <h:message for="freePasses" styleClass="error"/>
+        <br/><br/>
+
+        Postal Code:
+        <h:inputText value="#{student.postalCode}" id="postalCode" label="Postal Code">
+            <f:validateLength minimum="6" maximum="6"/>
+        </h:inputText>
+        <h:message for="postalCode" styleClass="error"/>
+        <br/><br/>
+
         Country:
         <h:selectOneMenu value="#{student.country}">
             <f:selectItems value="#{student.countryOptions}"/>

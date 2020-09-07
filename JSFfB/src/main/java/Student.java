@@ -11,6 +11,9 @@ public class Student {
     private final List<String> languageOptions;
     private String[] favLangs;
     private String email;
+    private String phoneNumber;
+    private String postalCode;
+    private int freePasses;
 
     public Student() {
         countryOptions = new ArrayList<String>();
@@ -88,5 +91,29 @@ public class Student {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getPostalCode() {
+        return postalCode;
+    }
+
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
+    }
+
+    public int getFreePasses() {
+        return freePasses;
+    }
+
+    public void setFreePasses(int freePasses) {
+        this.freePasses = freePasses;
     }
 }
