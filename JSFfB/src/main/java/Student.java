@@ -42,6 +42,13 @@ public class Student {
 //                itemLabel="United States"/>
     }
 
+    public Student(String firstName, String lastName, String email) {
+        this();
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+    }
+
     public String[] getFavLangs() {
         return favLangs;
     }

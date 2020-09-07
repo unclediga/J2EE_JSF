@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:composite="http://xmlns.jcp.org/jsf/composite"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+    <title>Student Table</title>
+</h:head>
+
+<h:body>
+    <h3>Student List</h3>
+    <hr/>
+    <ul>
+        <ui:repeat value="#{dataUtil.students}" var="student">
+            <li><h:outputText value="#{student}"/></li>
+        </ui:repeat>
+    </ul>
+    <h3>Student Table</h3>
+    <hr/>
+    <h:dataTable value="#{dataUtil.students}" var="student" border="1">
+        <h:column>
+            <f:facet name="header">First Name</f:facet>
+            <h:outputText value="#{student.firstName}"/>
+        </h:column>
+        <h:column>
+            <f:facet name="header">Last Name</f:facet>
+            <h:outputText value="#{student.lastName}"/>
+        </h:column>
+        <h:column>
+            <f:facet name="header">E-mail</f:facet>
+            <h:outputText value="#{student.email}"/>
+        </h:column>
+    </h:dataTable>
+</h:body>
+</html>
