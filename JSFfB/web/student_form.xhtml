@@ -6,25 +6,37 @@
       xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
     <title>Student Registration Form</title>
+    <style>
+        .error {
+            color: red
+        }
+    </style>
 </h:head>
 
 <h:body>
     <h:form>
-        First name: <h:inputText value="#{student.firstName}"/>
+        <h:messages styleClass="error"/>
+
+        First name: <h:inputText value="#{student.firstName}" required="true"
+                                 requiredMessage="First name is required!"/>
         <br/><br/>
 
-        Last name: <h:inputText value="#{student.lastName}"/>
+        Last name: <h:inputText value="#{student.lastName}" label="Last name" required="true"/>
+        <br/><br/>
+
+        e-mail: <h:inputText value="#{student.email}" id="email" label="e-mail" required="true"/>
+        <h:message for="email" styleClass="error"/>
         <br/><br/>
 
         Country:
         <h:selectOneMenu value="#{student.country}">
-            <f:selectItems value="#{student.countryOptions}" />
+            <f:selectItems value="#{student.countryOptions}"/>
         </h:selectOneMenu>
         <br/><br/>
 
         Favorite Languages:
         <h:selectManyCheckbox value="#{student.favLangs}">
-            <f:selectItems value="#{student.languageOptions}" />
+            <f:selectItems value="#{student.languageOptions}"/>
         </h:selectManyCheckbox>
 
         <h:commandButton value="Submit" action="student_response"/>

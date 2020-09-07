@@ -10,6 +10,7 @@ public class Student {
     private final List<String> countryOptions;
     private final List<String> languageOptions;
     private String[] favLangs;
+    private String email;
 
     public Student() {
         countryOptions = new ArrayList<String>();
@@ -79,5 +80,13 @@ public class Student {
                 "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 '}';
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
