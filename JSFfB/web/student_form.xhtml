@@ -3,17 +3,26 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough" xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
     <title>Student Registration Form</title>
 </h:head>
 
 <h:body>
     <h:form>
-        First name: <h:inputText value="#{student.firstName}" />
+        First name: <h:inputText value="#{student.firstName}"/>
         <br/><br/>
-        Last name: <h:inputText value="#{student.lastName}" />
+        Last name: <h:inputText value="#{student.lastName}"/>
         <br/><br/>
+        Counntry:
+        <h:selectOneMenu value="#{student.country}">
+            <f:selectItem itemValue="BR" itemLabel="Brazil"/>
+            <f:selectItem itemValue="FR" itemLabel="France"/>
+            <f:selectItem itemValue="GR" itemLabel="Germany"/>
+            <f:selectItem itemValue="IN" itemLabel="India"/>
+            <f:selectItem itemValue="GB" itemLabel="United Kingdom"/>
+            <f:selectItem itemValue="US" itemLabel="United States"/>
+        </h:selectOneMenu>
         <h:commandButton value="Submit" action="student_response"/>
     </h:form>
 </h:body>
