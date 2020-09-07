@@ -8,6 +8,8 @@ public class Student {
     private String lastName;
     private String country;
     private final List<String> countryOptions;
+    private String language;
+    private final List<String> languageOptions;
 
     public Student() {
         countryOptions = new ArrayList<String>();
@@ -18,6 +20,11 @@ public class Student {
         countryOptions.add("GB");
         countryOptions.add("US");
 
+        languageOptions = new ArrayList<String>();
+        languageOptions.add("Java");
+        languageOptions.add("C#");
+        languageOptions.add("Haskell");
+        languageOptions.add("JavaScript");
 //        itemLabel="Brazil"/>
 //                itemLabel="France"/>
 //                itemLabel="Germany"/>
@@ -28,6 +35,10 @@ public class Student {
 
     public List<String> getCountryOptions() {
         return countryOptions;
+    }
+
+    public List<String> getLanguageOptions() {
+        return languageOptions;
     }
 
     public String getFirstName() {
@@ -54,11 +65,19 @@ public class Student {
         this.country = country;
     }
 
+    public String getLanguage() {
+        return language;
+    }
+
     @Override
     public String toString() {
         return "Student{" +
                 "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 '}';
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
     }
 }

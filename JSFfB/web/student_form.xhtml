@@ -18,6 +18,11 @@
         <h:selectOneMenu value="#{student.country}">
             <f:selectItems value="#{student.countryOptions}" />
         </h:selectOneMenu>
+        <br/><br/>
+        Languages:
+        <h:selectOneRadio value="#{student.language}">
+            <f:selectItems value="#{student.languageOptions}" />
+        </h:selectOneRadio>
         <h:commandButton value="Submit" action="student_response"/>
     </h:form>
 </h:body>
