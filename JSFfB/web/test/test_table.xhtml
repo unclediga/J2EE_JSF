@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+>
+<h:head>
+    <title>Test Table</title>
+</h:head>
+
+<f:metadata>
+    <f:event type="preRenderView" listener="#{studentController.loadStudents}" />
+</f:metadata>
+<h:body>
+    <h3>Test Table</h3>
+    <h:dataTable value="#{studentController.students}" var="tbl" border="1">
+        <h:column >
+            <f:facet name="header">Last name</f:facet>
+            <h:outputText value="#{tbl.lastName}"/>
+        </h:column>
+        <h:column >
+            <f:facet name="header">First name</f:facet>
+            <h:outputText value="#{tbl.firstName}"/>
+        </h:column>
+        <h:column >
+            <f:facet name="header">e-mail</f:facet>
+            <h:outputText value="#{tbl.email}"/>
+        </h:column>
+    </h:dataTable>
+</h:body>
+</html>
