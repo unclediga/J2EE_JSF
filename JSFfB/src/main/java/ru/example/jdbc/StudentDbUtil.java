@@ -4,10 +4,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
@@ -78,12 +75,23 @@ public class StudentDbUtil {
         }
         return students;
     }
+
+    public void addStudent(Student student) throws SQLException {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        try{
+            connection = dataSource.getConnection();
+            statement = connection.prepareStatement("INSERT INTO student(last_name, first_name, email) VALUES(?, ?, ?)");
+            statement.setString(1,student.getLastName());
+            statement.setString(2,student.getFirstName());
+            statement.setString(3,student.getEmail());
+            statement.execute();
+        }finally {
+            close(connection, statement);
+        }
+    }
 //
 //    public Student getStudent() {
-//
-//    }
-//
-//    public Student addStudent() {
 //
 //    }
 //

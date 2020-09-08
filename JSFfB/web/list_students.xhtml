@@ -15,6 +15,7 @@
 <h:body>
     <h2>Super University</h2>
     <h3>Test Table</h3>
+    <h:button value="Add Student" outcome="add_student_form"/>
     <h:dataTable value="#{studentController.students}" var="tbl" border="1">
         <h:column>
             <f:facet name="header">Last name</f:facet>

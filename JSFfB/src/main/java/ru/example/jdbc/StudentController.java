@@ -4,6 +4,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
@@ -40,5 +41,15 @@ public class StudentController {
 
     public List<Student> getStudents() {
         return students;
+    }
+
+    public String addStudent(Student student) {
+        try {
+            studentDbUtil.addStudent(student);
+        } catch (SQLException e) {
+            logger.severe("Error on insert: " + e.getMessage());
+            addErrorMessage(e);
+        }
+        return "list_students?faces-redirect=true";
     }
 }
