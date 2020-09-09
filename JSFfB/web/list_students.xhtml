@@ -6,30 +6,36 @@
 >
 <h:head>
     <title>Student Tracker</title>
-    <h:outputStylesheet library="css" name="style.css" />
+    <h:outputStylesheet library="css" name="style.css"/>
 </h:head>
 
 <f:metadata>
-    <f:event type="preRenderView" listener="#{studentController.loadStudents}" />
+    <f:event type="preRenderView" listener="#{studentController.loadStudents}"/>
 </f:metadata>
 <h:body>
     <h2>Super University</h2>
     <h3>Test Table</h3>
     <h:button value="Add Student" outcome="add_student_form"/>
     <h:messages globalOnly="true"/>
-    <h:dataTable value="#{studentController.students}" var="tbl" border="1">
-        <h:column>
-            <f:facet name="header">Last name</f:facet>
-            <h:outputText value="#{tbl.lastName}"/>
-        </h:column>
-        <h:column>
-            <f:facet name="header">First name</f:facet>
-            <h:outputText value="#{tbl.firstName}"/>
-        </h:column>
-        <h:column>
-            <f:facet name="header">e-mail</f:facet>
-            <h:outputText value="#{tbl.email}"/>
-        </h:column>
-    </h:dataTable>
+    <h:form>
+        <h:dataTable value="#{studentController.students}" var="tbl" border="1">
+            <h:column>
+                <f:facet name="header">Last name</f:facet>
+                <h:outputText value="#{tbl.lastName}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">First name</f:facet>
+                <h:outputText value="#{tbl.firstName}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">e-mail</f:facet>
+                <h:outputText value="#{tbl.email}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Action</f:facet>
+                <h:commandLink value="Update" action="#{studentController.loadStudent(tbl.id)}"/>
+            </h:column>
+        </h:dataTable>
+    </h:form>
 </h:body>
 </html>

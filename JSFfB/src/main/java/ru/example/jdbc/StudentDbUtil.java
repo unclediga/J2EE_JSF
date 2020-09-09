@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.logging.Logger;
 
 public class StudentDbUtil {
-
     private static StudentDbUtil instance;
     private DataSource dataSource;
     private String jndiName = "java:comp/env/jdbc/student_tracker";
@@ -71,7 +70,7 @@ public class StudentDbUtil {
                 students.add(new Student(id, firstName, lastName, email));
             }
         } finally {
-            close(connection,statement,resultSet);
+            close(connection, statement, resultSet);
         }
         return students;
     }
@@ -79,26 +78,58 @@ public class StudentDbUtil {
     public void addStudent(Student student) throws SQLException {
         Connection connection = null;
         PreparedStatement statement = null;
-        try{
+        try {
             connection = dataSource.getConnection();
             statement = connection.prepareStatement("INSERT INTO student(last_name, first_name, email) VALUES(?, ?, ?)");
-            statement.setString(1,student.getLastName());
-            statement.setString(2,student.getFirstName());
-            statement.setString(3,student.getEmail());
+            statement.setString(1, student.getLastName());
+            statement.setString(2, student.getFirstName());
+            statement.setString(3, student.getEmail());
             statement.execute();
-        }finally {
+        } finally {
             close(connection, statement);
         }
     }
-//
-//    public Student getStudent() {
-//
-//    }
-//
-//    public Student updateStudent() {
-//
-//    }
-//
+
+    public Student getStudent(int id) throws Exception {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        try {
+            connection = dataSource.getConnection();
+            statement = connection.prepareStatement("SELECT * FROM student WHERE id = ?");
+            statement.setInt(1, id);
+            resultSet = statement.executeQuery();
+            Student student = null;
+            if (resultSet.next()) {
+                final String firstName = resultSet.getString("first_name");
+                final String lastName = resultSet.getString("last_name");
+                final String email = resultSet.getString("email");
+                student = new Student(id, firstName, lastName, email);
+            } else {
+                throw new Exception("Can't find student id=" + id);
+            }
+            return student;
+        } finally {
+            close(connection, statement, resultSet);
+        }
+    }
+
+    public void updateStudent(Student student) throws Exception {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        try {
+            connection = dataSource.getConnection();
+            statement = connection.prepareStatement("UPDATE student SET last_name=?, first_name=?, email=? WHERE id = ?");
+            statement.setString(1, student.getLastName());
+            statement.setString(2, student.getFirstName());
+            statement.setString(3, student.getEmail());
+            statement.setInt(4, student.getId());
+            statement.execute();
+        } finally {
+            close(connection, statement);
+        }
+    }
+
 //    public void deleteStudent() {
 //
 //    }
