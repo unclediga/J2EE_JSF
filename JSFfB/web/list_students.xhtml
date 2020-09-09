@@ -14,7 +14,6 @@
 </f:metadata>
 <h:body>
     <h2>Super University</h2>
-    <h3>Test Table</h3>
     <h:button value="Add Student" outcome="add_student_form"/>
     <h:messages globalOnly="true"/>
     <h:form>
@@ -34,6 +33,9 @@
             <h:column>
                 <f:facet name="header">Action</f:facet>
                 <h:commandLink value="Update" action="#{studentController.loadStudent(tbl.id)}"/>
+                |
+                <h:commandLink value="Delete" action="#{studentController.deleteStudent(tbl.id)}"
+                               onclick="if(!confirm('Are you sure?')) return false"/>
             </h:column>
         </h:dataTable>
     </h:form>

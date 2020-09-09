@@ -7,7 +7,6 @@ import javax.sql.DataSource;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 
 public class StudentDbUtil {
     private static StudentDbUtil instance;
@@ -130,7 +129,17 @@ public class StudentDbUtil {
         }
     }
 
-//    public void deleteStudent() {
-//
-//    }
+    public void deleteStudent(int id) throws SQLException {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        try {
+            connection = dataSource.getConnection();
+            statement = connection.prepareStatement("DELETE FROM student WHERE id = ?");
+            statement.setInt(1, id);
+            statement.execute();
+        } finally {
+            close(connection, statement);
+        }
+
+    }
 }

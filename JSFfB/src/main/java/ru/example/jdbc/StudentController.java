@@ -14,8 +14,8 @@ import java.util.logging.Logger;
 @ManagedBean
 public class StudentController {
     private List<Student> students;
-    private StudentDbUtil studentDbUtil;
-    private Logger logger = Logger.getLogger(getClass().getName());
+    private final StudentDbUtil studentDbUtil;
+    private final Logger logger = Logger.getLogger(getClass().getName());
 
     public StudentController() throws Exception {
         students = new ArrayList<>();
@@ -73,6 +73,18 @@ public class StudentController {
             studentDbUtil.updateStudent(student);
         } catch (Exception e) {
             logger.severe("Error on update: " + e.getMessage());
+            addErrorMessage(e);
+            return null;
+        }
+        return "list_students?faces-redirect=true";
+    }
+
+    public String deleteStudent(int id) {
+        logger.info("Deleting student id=" + id);
+        try {
+            studentDbUtil.deleteStudent(id);
+        } catch (Exception e) {
+            logger.severe("Error on delete: " + e.getMessage());
             addErrorMessage(e);
             return null;
         }
